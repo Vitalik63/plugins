@@ -81,6 +81,15 @@ class MethodChannelWebViewPlatform implements WebViewPlatformController {
   }
 
   @override
+  Future<void> postUrl(String url, String postData) async {
+    assert(url != null);
+    return _channel.invokeMethod('postUrl', <String, dynamic> {
+      'url': url,
+      'postData': postData,
+    });
+  }
+
+  @override
   Future<String> currentUrl() => _channel.invokeMethod<String>('currentUrl');
 
   @override
